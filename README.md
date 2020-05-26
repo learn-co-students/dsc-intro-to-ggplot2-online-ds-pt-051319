@@ -4,6 +4,7 @@
 
 * [ ] Get Tips Data 
 * [ ] Create R Script
+* [ ] Add images on djb desktop 
 * [ ] Create Markdown
 * [ ] Create Project 
 * [ ] Add images from markdown 
