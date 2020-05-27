@@ -2,11 +2,9 @@
 
 ## To Do 
 
-* [ ] Get Tips Data 
 * [ ] Create R Script
 * [ ] Add images on djb desktop 
 * [ ] Create Markdown
-* [ ] Create Project 
 * [ ] Add images from markdown 
 
 ## Lesson Goals 
@@ -29,7 +27,7 @@ Let's import both the `readr` package and `ggplot2` to get started then read in 
 library(readr) # for getting data
 library(ggplot2) # for plotting data
 
-tips <- read_csv("tips.csv")
+tips <- read_csv("data/tips.csv")
 
 # You can change where this is output above in "Settings (by knit) > Chunk Output in Console"
 tips
@@ -39,6 +37,7 @@ tips
 Let's start out by trying to make a scatterplot of our total bill by tips with ggplot.
 
 One thing that we learned from the last lesson is that the first thing that many tidyverse functions expect is the data that we want to manipulate; ggplot2 is no different. 
+
 Let's see what happens if you just run `ggplot()` on our dataset.
 
 ```{r}
@@ -48,7 +47,7 @@ ggplot(tips)
 If you run this in your R console, you won't get any errors, but you also won't see anything interesting. 
 It might look a bit like this:
 
-* IMG 
+![](img/ggp-1.png)
 
 There's a big grey area where there should be a plot!
 Why isn't there anything there?
@@ -65,7 +64,7 @@ The code above gets a bit more explicit about what we want to plot.
 Specifically, here we want to put our `total_bill` variable on the x axis and the `tip` variable on the y axis.
 If you run that, it will look a bit like this:
 
-* IMG 2
+![](img/ggp-2.png)
 
 What do we see now?
 Now ggplot knows what variables you want on each axis and under the hood it does the math to figure out what the mathematial bounds of that variable are.
@@ -77,7 +76,7 @@ In this case, we want to make a scatter plot.
 To make a scatter plot in ggplot, we need to add layer of data to the space that we have already created for our data to live. 
 We do this with a `geom_*`.
 In this case, that will be `geom_point()` since we want to put a bunch of points on this space, but there are many other geoms you can use! 
-Read about them [here].
+Read about them [here](https://ggplot2.tidyverse.org/reference/).
 
 Notice here before running the code below that we are adding layers to our ggplot and as a result we need to use the `+` operator and NOT the `%>%` pipe operator.
 We mention that now since using the `%>%` in ggplots is a common mistake (especially because of reasons you'll see at the end of this lesson!).
@@ -89,14 +88,18 @@ ggplot(tips, aes(x = total_bill, y = tip)) +
   geom_point()
 ```
 
+![](img/ggp-3.png)
+
 It's our points! 
 We now have the data on the plot. 
 This is pretty much the most basic scatter plot you could make with ggplot.
 We mapped our data to two different axes and threw our data on top of it using a layer.
-Now if we take advantage of this idea of having different data being mapped to different aesthetics that are availble to us and the fact that we can keep adding layers to this, we can actually do some pretty powerful things with this grammer (the gg in ggplot2 stands for grammar of graphics!).
+Now if we take advantage of this idea of having different data being mapped to different aesthetics that are availble to us and the fact that we can keep adding layers to this, we can actually do some pretty powerful things with this grammer (the gg in ggplot2 stands for [grammar of graphics](https://www.springer.com/gp/book/9780387245447)!).
 
 So what can we do with this?
+
 Well the first thing we might want to explore is how we can explore mapping other data we have availble to us to other aethetics.
+
 Just like in seaborn, we can use color to our advantage to help bring out different trends.
 In order to this, we need to tell ggplot that we want the time variable to be mapped to the color aesthetic as in the code below:
 
@@ -105,9 +108,10 @@ ggplot(tips, aes(x = total_bill, y = tip, color = time)) +
   geom_point()
 ```
 
-* IMG
+![](img/ggp-4.png)
 
 But why stop there?
+
 Let's take advantage of the fact that we can use the shape mapping to show another part of our data and map shape to our smoker variable. 
 
 ```{r}
@@ -115,7 +119,8 @@ ggplot(tips, aes(x = total_bill, y = tip, color = time, shape = smoker)) +
   geom_point()
 ```
 
-* IMG
+![](img/ggp-5.png)
+
 
 Now that's a lot of data here and you might have a hard time digesting all of that in one go.
 But why stop there? 
@@ -130,11 +135,13 @@ ggplot(tips, aes(x = total_bill, y = tip, color = time, shape = smoker)) +
   facet_wrap(~day)
 ```
 
-* IMG
+![](img/ggp-5.png)
+
 
 And just like that we have broken up our data into different panels based on a variable already in our dataset!
 
 The other major type of plot you probably find yourself making a lot of in the world of data science are barplots. 
+
 Let's make one using ggplot2! 
 
 Now knowing what you know about ggplot thus far, can you figure out what the plot blow is going to do without actually running it?
@@ -145,10 +152,16 @@ ggplot(tips, aes(x = day)) +
   geom_bar()
 ```
 
+![](img/ggp-6.png)
+
+
 ```{r}
 ggplot(tips, aes(x = day, fill= smoker)) +
   geom_bar()
 ```
+
+![](img/ggp-7.png)
+
 
 Just like above, to make a ggplot you need to first tell it what data you want to work with, then how you want to map your data to the aesthetic properties of the data visualzation.
 Now since we know we are going to make a bar plot, bar plots almost always have counts as the y axis and any other variation on them is going to need the count data to make plots that depend on it like percents. 
@@ -162,10 +175,16 @@ ggplot(tips, aes(x = day, fill= smoker)) +
   geom_bar(position = "dodge")
 ```
 
+![](img/ggp-8.png)
+
+
 ```{r}
 ggplot(tips, aes(x = day, fill= smoker)) +
   geom_bar(position = "fill")
 ```
+
+![](img/ggp-9.png)
+
 
 And you can also use what we did above to break these down with `facet_wrap()`:
 
@@ -175,6 +194,7 @@ ggplot(tips, aes(x = day, fill= smoker)) +
   facet_wrap(~time)
 ```
 
+![](img/ggp-10.png)
 
 
 
@@ -191,6 +211,8 @@ ggplot(tips, aes(x = day, fill= smoker)) +
        subtitle = "Position by Smoker",
        x =  "Day", y = "Count")
 ```
+
+![](img/ggp-10.png)
 
 Notice that we add on another layer here with the `labs()` function to add on our title, the name of our axes, and we can even add a subtitle! 
 
@@ -217,5 +239,6 @@ tips %>%
        x =  "Day", y = "Count")
   
 ```
+![](img/ggp-11.png)
 
 This can be very helpful when making analyeses on the fly! 
