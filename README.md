@@ -35,7 +35,7 @@ Let's start out by trying to make a scatterplot of our total bill by tips with g
 
 One thing that we learned from the last lesson is that the first thing that many tidyverse functions expect is the data that we want to manipulate; ggplot2 is no different. 
 
-Let's see what happens if you just run `ggplot()` on our dataset.
+Let's see what happens if you just run `ggplot()` on our data set.
 
 ```{r}
 ggplot(tips)
@@ -51,7 +51,7 @@ Why isn't there anything there?
 Well ggplot can't read your mind and has no idea what we want to plot!
 
 In order to change this, we need to tell it what data we're interested in plotting.
-We need to map the data in our dataset to what will end up being the aesthetic properties of our data visualization. 
+We need to map the data in our data set to what will end up being the aesthetic properties of our data visualization. 
 
 ```{r}
 ggplot(tips, aes(x = total_bill, y = tip))
@@ -64,7 +64,7 @@ If you run that, it will look a bit like this:
 ![](img/ggp-2.png)
 
 What do we see now?
-Now ggplot knows what variables you want on each axis and under the hood it does the math to figure out what the mathematial bounds of that variable are.
+Now ggplot knows what variables you want on each axis and under the hood it does the math to figure out what the mathematical bounds of that variable are.
 It names each axis what the variable is and gives us some default spacings.
 But where is the data?
 Again, we're going to have to tell ggplot how we want our data put onto this space.
@@ -91,11 +91,11 @@ It's our points!
 We now have the data on the plot. 
 This is pretty much the most basic scatter plot you could make with ggplot.
 We mapped our data to two different axes and threw our data on top of it using a layer.
-Now if we take advantage of this idea of having different data being mapped to different aesthetics that are availble to us and the fact that we can keep adding layers to this, we can actually do some pretty powerful things with this grammer (the gg in ggplot2 stands for [grammar of graphics](https://www.springer.com/gp/book/9780387245447)!).
+Now if we take advantage of this idea of having different data being mapped to different aesthetics that are available to us and the fact that we can keep adding layers to this, we can actually do some pretty powerful things with this grammar (the gg in ggplot2 stands for [grammar of graphics](https://www.springer.com/gp/book/9780387245447)!).
 
 So what can we do with this?
 
-Well the first thing we might want to explore is how we can explore mapping other data we have availble to us to other aethetics.
+Well the first thing we might want to explore is how we can explore mapping other data we have available to us to other aesthetics.
 
 Just like in seaborn, we can use color to our advantage to help bring out different trends.
 In order to this, we need to tell ggplot that we want the time variable to be mapped to the color aesthetic as in the code below:
@@ -121,7 +121,7 @@ ggplot(tips, aes(x = total_bill, y = tip, color = time, shape = smoker)) +
 
 Now that's a lot of data here and you might have a hard time digesting all of that in one go.
 But why stop there? 
-We have more data in our dataset that we could break up using some other cool features of ggplot. 
+We have more data in our data set that we could break up using some other cool features of ggplot. 
 
 For example, we also have data on what day each transaction took place.
 If we wanted to make separate plots for each day, we can use the `facet_wrap()` functionality for that 
@@ -135,9 +135,9 @@ ggplot(tips, aes(x = total_bill, y = tip, color = time, shape = smoker)) +
 ![](img/ggp-6.png)
 
 
-And just like that we have broken up our data into different panels based on a variable already in our dataset!
+And just like that we have broken up our data into different panels based on a variable already in our data set!
 
-The other major type of plot you probably find yourself making a lot of in the world of data science are barplots. 
+The other major type of plot you probably find yourself making a lot of in the world of data science are bar plots. 
 
 Let's make one using ggplot2! 
 
@@ -159,10 +159,10 @@ ggplot(tips, aes(x = day, fill= smoker)) +
 
 ![](img/ggp-8.png)
 
-Just like above, to make a ggplot you need to first tell it what data you want to work with, then how you want to map your data to the aesthetic properties of the data visualzation.
+Just like above, to make a ggplot you need to first tell it what data you want to work with, then how you want to map your data to the aesthetic properties of the data visualization.
 Now since we know we are going to make a bar plot, bar plots almost always have counts as the y axis and any other variation on them is going to need the count data to make plots that depend on it like percents. 
 Luckily for us, this is easy for us to do in ggplot! 
-Note that we only have to map our x variable here and then can use the `fill` aesthetic to futher break down our bars. 
+Note that we only have to map our x variable here and then can use the `fill` aesthetic to further break down our bars. 
 Further, you can also change how this data is presented by altering an argument in the `geom_bar()` layer as shown below to get your bars next to one another. 
 
 
@@ -195,7 +195,7 @@ ggplot(tips, aes(x = day, fill= smoker)) +
 Now these plots here tell us a lot about the data, but might not be as clear to other people.
 Let's make it easier for them to read.
 
-As we learend before, if we want more information on this plot, we need to add on a layer with the `+` operator. 
+As we learned before, if we want more information on this plot, we need to add on a layer with the `+` operator. 
 
 ```{r}
 ggplot(tips, aes(x = day, fill= smoker)) +
@@ -214,8 +214,8 @@ Let's now take a plot from above that we liked and begin to modify it!
 
 
 Lastly, let's see something that I also think is quite cool and great for your data science workflow.
-If you notice here, the first argument of ggplot() was the dataframe.
-If you recall from last time, when we use the `%>%` operator we can take some tibble and pass it to a function where the input of the funciton gets passed as the first argument.
+If you notice here, the first argument of ggplot() was the data frame.
+If you recall from last time, when we use the `%>%` operator we can take some tibble and pass it to a function where the input of the function gets passed as the first argument.
 Since we can do this, there's no reason we can't just pass in a large `dplyr` pipeline right to a `ggplot`!
 For example, what if we were only interested in plotting the data where people spent over five pounds (after we make the conversion on the fly!)!
 The code below shows that:
@@ -235,4 +235,4 @@ tips %>%
 ```
 ![](img/ggp-11.png)
 
-This can be very helpful when making analyeses on the fly! 
+This can be very helpful when making analyses on the fly! 
