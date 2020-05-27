@@ -31,6 +31,19 @@ ggplot(tips, aes(x = day, fill= smoker)) +
   geom_bar()
 
 ggplot(tips, aes(x = day, fill= smoker)) +
+  geom_bar(position = "dodge")
+
+
+ggplot(tips, aes(x = day, fill= smoker)) +
+  geom_bar(position = "fill")
+
+
+
+
+
+
+
+ggplot(tips, aes(x = day, fill= smoker)) +
   geom_bar(position = "dodge") + 
   facet_wrap(~time)
 
