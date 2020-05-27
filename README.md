@@ -132,7 +132,7 @@ ggplot(tips, aes(x = total_bill, y = tip, color = time, shape = smoker)) +
   facet_wrap(~day)
 ```
 
-![](img/ggp-5.png)
+![](img/ggp-6.png)
 
 
 And just like that we have broken up our data into different panels based on a variable already in our dataset!
@@ -149,7 +149,7 @@ ggplot(tips, aes(x = day)) +
   geom_bar()
 ```
 
-![](img/ggp-6.png)
+![](img/ggp-7.png)
 
 
 ```{r}
@@ -157,8 +157,7 @@ ggplot(tips, aes(x = day, fill= smoker)) +
   geom_bar()
 ```
 
-![](img/ggp-7.png)
-
+![](img/ggp-8.png)
 
 Just like above, to make a ggplot you need to first tell it what data you want to work with, then how you want to map your data to the aesthetic properties of the data visualzation.
 Now since we know we are going to make a bar plot, bar plots almost always have counts as the y axis and any other variation on them is going to need the count data to make plots that depend on it like percents. 
@@ -172,7 +171,7 @@ ggplot(tips, aes(x = day, fill= smoker)) +
   geom_bar(position = "dodge")
 ```
 
-![](img/ggp-8.png)
+![](img/ggp-9.png)
 
 
 ```{r}
@@ -180,7 +179,7 @@ ggplot(tips, aes(x = day, fill= smoker)) +
   geom_bar(position = "fill")
 ```
 
-![](img/ggp-9.png)
+![](img/ggp-10.png)
 
 
 And you can also use what we did above to break these down with `facet_wrap()`:
@@ -191,7 +190,7 @@ ggplot(tips, aes(x = day, fill= smoker)) +
   facet_wrap(~time)
 ```
 
-![](img/ggp-10.png)
+![](img/ggp-11.png)
 
 
 
