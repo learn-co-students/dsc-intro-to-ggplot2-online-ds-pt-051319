@@ -9,6 +9,7 @@
 By the end of this lesson, you will be able to:
 
 * [ ] Make a scatter plot in ggplot2  
+* [ ] Make a bar plot in ggplot2  
 * [ ] Understand how to build up separate layers in a ggplot
 * [ ] Know where to find more resources on learning ggplot2
 
