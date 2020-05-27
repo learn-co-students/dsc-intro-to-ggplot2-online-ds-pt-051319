@@ -171,7 +171,7 @@ ggplot(tips, aes(x = day, fill= smoker)) +
   geom_bar(position = "dodge")
 ```
 
-![](img/ggp-9.png)
+![](img/ggp-dodge.png)
 
 
 ```{r}
@@ -179,7 +179,7 @@ ggplot(tips, aes(x = day, fill= smoker)) +
   geom_bar(position = "fill")
 ```
 
-![](img/ggp-10.png)
+![](img/ggp-fill.png)
 
 
 And you can also use what we did above to break these down with `facet_wrap()`:
@@ -190,9 +190,7 @@ ggplot(tips, aes(x = day, fill= smoker)) +
   facet_wrap(~time)
 ```
 
-![](img/ggp-11.png)
-
-
+![](img/ggp-9.png)
 
 Now these plots here tell us a lot about the data, but might not be as clear to other people.
 Let's make it easier for them to read.
