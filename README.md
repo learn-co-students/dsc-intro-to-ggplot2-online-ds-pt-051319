@@ -2,10 +2,7 @@
 
 ## To Do 
 
-* [ ] Create R Script
-* [ ] Add images on djb desktop 
 * [ ] Create Markdown
-* [ ] Add images from markdown 
 
 ## Lesson Goals 
 
