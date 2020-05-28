@@ -1,23 +1,23 @@
 # Intro to ggplot2
 
-## To Do 
-
-* [ ] Create Markdown
-
-## Lesson Goals 
-
-By the end of this lesson, you will be able to:
-
-* [ ] Make a scatter plot in ggplot2  
-* [ ] Make a bar plot in ggplot2  
-* [ ] Understand how to build up separate layers in a ggplot
-* [ ] Know where to find more resources on learning ggplot2
-
-# ggplot2 
+## Introduction
 
 The thing you often hear a lot about with R is how it's great at making graphics. 
+
 This is true.
+
 While there are many packages that you can use for this (just like in Python!), the one we're going to look at here is ggplot2, the main plotting library from the tidyverse!
+
+## Objectives
+
+You will be able to:
+
+* Make a scatter plot in ggplot2  
+* Make a bar plot in ggplot2  
+* Understand how to build up separate layers in a ggplot
+* Know where to find more resources on learning ggplot2
+
+## ggplot2 
 
 Let's import both the `readr` package and `ggplot2` to get started then read in our `tips` data again so we can plot what we were looking at in our last lesson. 
 
@@ -59,7 +59,7 @@ ggplot(tips, aes(x = total_bill, y = tip))
 ```
 
 The code above gets a bit more explicit about what we want to plot.
-Specifically, here we want to put our `total_bill` variable on the x axis and the `tip` variable on the y axis.
+Specifically, here we want to put our `total_bill` variable on the x-axis and the `tip` variable on the y axis.
 If you run that, it will look a bit like this:
 
 ![](img/ggp-2.png)
@@ -71,7 +71,7 @@ But where is the data?
 Again, we're going to have to tell ggplot how we want our data put onto this space.
 
 In this case, we want to make a scatter plot.
-To make a scatter plot in ggplot, we need to add layer of data to the space that we have already created for our data to live. 
+To make a scatter plot in ggplot, we need to add a layer of data to the space that we have already created for our data to live. 
 We do this with a `geom_*`.
 In this case, that will be `geom_point()` since we want to put a bunch of points on this space, but there are many other geoms you can use! 
 Read about them [here](https://ggplot2.tidyverse.org/reference/).
@@ -136,7 +136,7 @@ ggplot(tips, aes(x = total_bill, y = tip, color = time, shape = smoker)) +
 ![](img/ggp-6.png)
 
 
-And just like that we have broken up our data into different panels based on a variable already in our data set!
+And just like that, we have broken up our data into different panels based on a variable already in our data set!
 
 The other major type of plot you probably find yourself making a lot of in the world of data science are bar plots. 
 
@@ -161,7 +161,7 @@ ggplot(tips, aes(x = day, fill= smoker)) +
 ![](img/ggp-8.png)
 
 Just like above, to make a ggplot you need to first tell it what data you want to work with, then how you want to map your data to the aesthetic properties of the data visualization.
-Now since we know we are going to make a bar plot, bar plots almost always have counts as the y axis and any other variation on them is going to need the count data to make plots that depend on it like percents. 
+Now since we know we are going to make a bar plot, bar plots almost always have counts as the y-axis and any other variation on them is going to need the count data to make plots that depend on it like percents. 
 Luckily for us, this is easy for us to do in ggplot! 
 Note that we only have to map our x variable here and then can use the `fill` aesthetic to further break down our bars. 
 Further, you can also change how this data is presented by altering an argument in the `geom_bar()` layer as shown below to get your bars next to one another. 
@@ -237,3 +237,6 @@ tips %>%
 ![](img/ggp-11.png)
 
 This can be very helpful when making analyses on the fly! 
+
+## Summary
+Congrats! Let's move on to a ggplot2 Lab!
