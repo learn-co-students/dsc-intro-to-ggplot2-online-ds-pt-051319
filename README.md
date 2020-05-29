@@ -1,4 +1,4 @@
-# Intro to ggplot2
+# ggplot2
 
 ## Introduction
 
