@@ -1,6 +1,10 @@
 ---
 :lessons:
-- :id: 5123
+- :id: 18496
+  :course_id: 296
+  :canvas_url: https://learning.flatironschool.com/courses/296/pages/dsc-intro-to-ggplot2
+  :type: page
+- :id: 5131
   :course_id: 296
   :canvas_url: https://learning.flatironschool.com/courses/296/pages/dsc-intro-to-ggplot2
   :type: page
